@@ -1,0 +1,21 @@
+services:
+  db:
+    image: mysql:9.0
+    container_name: mysql_cappelli
+    restart: always
+    environment:
+      MYSQL_DATABASE: catalogo_cap
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    networks:
+      - app-network
+    volumes:
+      - db_data:/var/lib/mysql
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  db_data:
